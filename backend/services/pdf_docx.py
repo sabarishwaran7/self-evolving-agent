@@ -147,19 +147,44 @@ class DocumentCompilerService:
         story.append(Paragraph("<b>IEEE Access</b>", ParagraphStyle('Logo', fontName='Helvetica-Bold', fontSize=28, textColor=ieee_blue, alignment=0, spaceAfter=24)))
         story.append(Paragraph(paper_data.get("title", "Untitled Research Paper"), title_style))
         
-        # 2. Authors
+        # 2. Authors (IEEE Side-by-Side Layout)
         author_raw = paper_data.get("authorName", "Sabarishwaran")
         if not author_raw or author_raw == "Academic Researcher":
             author_raw = "Sabarishwaran"
         inst_raw = paper_data.get("institution", "AI Research Institute")
         author_email = paper_data.get("authorEmail", "")
-        authors_list = [a.strip().upper() for a in author_raw.split(',')]
+        
+        authors_list = [a.strip() for a in author_raw.split(',')]
+        
+        # Build cells for each author
+        author_cells = []
+        for author_name in authors_list:
+            cell_story = []
+            cell_story.append(Paragraph(author_name, authors_style))
+            cell_story.append(Paragraph(inst_raw, inst_style))
+            if author_email:
+                cell_story.append(Paragraph(f"<u><font color='blue'>{author_email}</font></u>", inst_style))
+            author_cells.append(cell_story)
             
-        authors_str = ", ".join(authors_list)
-        story.append(Paragraph(authors_str, authors_style))
-        story.append(Paragraph(inst_raw, inst_style))
-        if author_email:
-            story.append(Paragraph(author_email, inst_style))
+        # Group cells into rows of max 3 columns
+        max_cols = 3
+        author_rows = []
+        for i in range(0, len(author_cells), max_cols):
+            row = author_cells[i:i+max_cols]
+            # Pad the row with empty strings if less than max_cols
+            while len(row) < max_cols:
+                row.append("")
+            author_rows.append(row)
+            
+        if author_rows:
+            author_table = Table(author_rows, colWidths=[doc.width / max_cols] * max_cols)
+            author_table.setStyle(TableStyle([
+                ('VALIGN', (0,0), (-1,-1), 'TOP'),
+                ('ALIGN', (0,0), (-1,-1), 'CENTER'),
+                ('BOTTOMPADDING', (0,0), (-1,-1), 12)
+            ]))
+            story.append(author_table)
+            story.append(Spacer(1, 12))
         
         # 3. Abstract and Keywords
         abstract_text = paper_data.get("abstract", "No abstract provided.")

@@ -463,11 +463,9 @@ class MultiAgentOrchestrator:
                     f"You are an expert academic researcher writing the '{section_name}' section for the paper '{title}'.\n"
                     f"Abstract Context: {abstract}\n\n"
                     "CRITICAL INSTRUCTIONS:\n"
-                    "- Write an extremely long, deeply analytical, and comprehensive essay for this specific section.\n"
-                    "- You MUST write a minimum of 1500 words for this section alone to ensure the final paper is 10+ pages.\n"
-                    "- You MUST break this section down into at least 3 to 4 detailed sub-sections with their own sub-headings.\n"
-                    "- Include complex architectural justifications, methodologies, mathematical equations, algorithms, and simulated data tables where applicable to dramatically increase length and depth.\n"
-                    "- Do not use JSON format. Output plain text/markdown only.\n"
+                    "- Write a deeply analytical, highly detailed, and comprehensive essay for this specific section.\n"
+                    "- You MUST break this section down into multiple detailed sub-sections with their own sub-headings.\n"
+                    "- Provide extremely thorough explanations, case studies, theoretical background, and logical justifications to naturally increase length without repeating yourself.\n"
                 )
                 sec_res = client.chat.completions.create(
                     model="llama-3.3-70b-versatile",
@@ -505,25 +503,26 @@ class MultiAgentOrchestrator:
             # Fallback to robust simulated content generator matching the reference format
             abstract = f"This paper explores {title} using advanced computational paradigms and multi-agent coordination architectures."
             
-            # Varied academic sentences to mix and match
             sentences = [
-                "The rapid advancement of computational models has necessitated a fundamental rethinking of traditional paradigms. ",
-                "By leveraging distributed architectures, the system achieves unprecedented levels of scalability and fault tolerance. ",
-                "Empirical analysis demonstrates that our proposed methodology significantly outperforms established baseline metrics. ",
-                "Furthermore, the integration of real-time processing capabilities allows for dynamic adaptation to shifting environmental variables. ",
-                "A critical aspect of this research involves mitigating latency bottlenecks through optimized routing protocols. ",
-                "In contrast to legacy systems, the novel approach prioritizes modularity, thereby reducing long-term maintenance overhead. ",
-                "Statistical significance testing confirms the reliability of the predictive models under varying load conditions. ",
-                "The convergence of these technologies presents unique opportunities for cross-disciplinary innovation and application. ",
-                "Consequently, the architectural framework is designed to support seamless integration with existing enterprise infrastructure. ",
-                "Future iterations will focus on enhancing the granularity of the data extraction algorithms to capture subtle anomalous patterns. ",
-                "It is imperative to address the security considerations inherent in decentralized processing topologies. ",
-                "The experimental setup utilized a diverse dataset encompassing multiple domains to ensure broad applicability. ",
-                "Through iterative refinement, the core processing engine was optimized to minimize resource consumption while maximizing throughput. "
+                "The rapid advancement of computational models has necessitated a fundamental rethinking of traditional paradigms, specifically in how we process high-dimensional spatial data over temporal sequences. ",
+                "By leveraging distributed multi-agent architectures, the underlying system achieves unprecedented levels of scalability and fault tolerance when dealing with noisy environments. ",
+                "Empirical analysis demonstrates that our proposed methodology significantly outperforms established baseline metrics, achieving convergence much faster than traditional convolutional networks. ",
+                "Furthermore, the integration of real-time processing capabilities allows for dynamic adaptation to shifting environmental variables, highlighting the robustness of the core algorithm. ",
+                "A critical aspect of this research involves mitigating latency bottlenecks through optimized routing protocols and advanced memory caching strategies. ",
+                "In contrast to legacy monolithic systems, the novel approach prioritizes modularity and decentralized state management, thereby reducing long-term maintenance overhead. ",
+                "Statistical significance testing across large datasets confirms the reliability of the predictive models under varying load conditions and extreme edge cases. ",
+                "The convergence of these distinct technologies presents unique opportunities for cross-disciplinary innovation and application in both industrial and academic sectors. ",
+                "Consequently, the architectural framework is designed to support seamless integration with existing enterprise infrastructure without requiring significant refactoring. ",
+                "Future iterations will focus on enhancing the granularity of the data extraction algorithms to capture subtle anomalous patterns that are currently undetected by standard filters. ",
+                "It is imperative to address the security considerations inherent in decentralized processing topologies, specifically regarding adversarial data poisoning. ",
+                "The experimental setup utilized a diverse dataset encompassing multiple geographic and temporal domains to ensure broad applicability and reduce regional bias. ",
+                "Through iterative refinement, the core processing engine was heavily optimized to minimize resource consumption while simultaneously maximizing throughput across all nodes. ",
+                "By utilizing attention mechanisms alongside spatial convolution, the model effectively isolates features of interest while naturally suppressing background noise. ",
+                "Our ablation studies clearly demonstrate the necessity of each architectural component, validating the theoretical framework established in earlier sections. "
             ]
             
             # Use the provided custom headings if available, else default
-            outline = custom_headings.split(",") if custom_headings else ["Introduction", "Methodology", "Results", "Conclusion"]
+            outline = custom_headings.split(",") if custom_headings else ["Introduction", "Literature Survey", "Methodology", "System Design", "Results & Discussion", "Conclusion"]
             outline = [h.strip() for h in outline if h.strip()]
             
             sections = {h: "" for h in outline}
@@ -546,7 +545,7 @@ class MultiAgentOrchestrator:
 
         return {
             "title": title,
-            "format": "Custom Advanced",
+            "format": "IEEE",
             "abstract": abstract,
             "sections": sections,
             "references": references,
