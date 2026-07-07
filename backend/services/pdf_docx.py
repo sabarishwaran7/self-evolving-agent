@@ -166,8 +166,8 @@ class DocumentCompilerService:
                 cell_story.append(Paragraph(f"<u><font color='blue'>{author_email}</font></u>", inst_style))
             author_cells.append(cell_story)
             
-        # Group cells into rows of max 3 columns
-        max_cols = 3
+        # Group cells into rows of max_cols
+        max_cols = min(3, len(author_cells)) if len(author_cells) > 0 else 1
         author_rows = []
         for i in range(0, len(author_cells), max_cols):
             row = author_cells[i:i+max_cols]
