@@ -141,8 +141,9 @@ class MultiAgentOrchestrator:
                         f"Abstract Context: {abstract}\n\n"
                         "CRITICAL INSTRUCTIONS:\n"
                         "- Write an extremely long, deeply analytical, and comprehensive essay for this specific section.\n"
-                        "- You MUST write a minimum of 800 words for this section alone.\n"
-                        "- Include complex architectural justifications, methodologies, equations, and data where applicable.\n"
+                        "- You MUST write a minimum of 1500 words for this section alone to ensure the final paper is 5 to 10 pages long.\n"
+                        "- You MUST break this section down into at least 3 to 4 detailed sub-sections with their own sub-headings.\n"
+                        "- Include complex architectural justifications, methodologies, mathematical equations, algorithms, and simulated data tables where applicable to dramatically increase length and depth.\n"
                         "- Do not use JSON format. Output plain text/markdown only.\n"
                         "- Do not repeat generic sentences.\n"
                     )
@@ -463,7 +464,9 @@ class MultiAgentOrchestrator:
                     f"Abstract Context: {abstract}\n\n"
                     "CRITICAL INSTRUCTIONS:\n"
                     "- Write an extremely long, deeply analytical, and comprehensive essay for this specific section.\n"
-                    "- You MUST write a minimum of 1000 words for this section alone to ensure the final paper is 10+ pages.\n"
+                    "- You MUST write a minimum of 1500 words for this section alone to ensure the final paper is 10+ pages.\n"
+                    "- You MUST break this section down into at least 3 to 4 detailed sub-sections with their own sub-headings.\n"
+                    "- Include complex architectural justifications, methodologies, mathematical equations, algorithms, and simulated data tables where applicable to dramatically increase length and depth.\n"
                     "- Do not use JSON format. Output plain text/markdown only.\n"
                 )
                 sec_res = client.chat.completions.create(
