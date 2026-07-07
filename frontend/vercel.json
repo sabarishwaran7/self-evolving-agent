@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/api/(.*)",
-      "destination": "https://<your-render-url>/api/$1"
+      "destination": "https://self-evolving-agent-1.onrender.com/api/$1"
     },
     {
       "source": "/(.*)",
