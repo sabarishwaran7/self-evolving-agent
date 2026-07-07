@@ -13,6 +13,8 @@ This project uses a coordinated network of specialized LLM agents (powered by Gr
 - **Alert & Notification Hub**: Real-time communication tracking dispatching Twilio SMS and SendGrid email updates.
 
 ## 📸 Screenshots
+   <img width="1912" height="906" alt="image" src="https://github.com/user-attachments/assets/6b88ba28-d6fd-4f87-8663-903126c490be" />
+
 
 ### 🖥️ Main Research Dashboard
 *Main Dashboard Interface*
