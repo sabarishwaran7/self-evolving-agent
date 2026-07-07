@@ -1,4 +1,4 @@
-# Self-Evolving Multi-Agent AI Research Assistant
+# Self-Evolving Multi-Agent AI Research Paper Assistant
 A comprehensive multi-agent system for academic paper generation and research analysis, now featuring self-evolving memory loops and professional PDF compiling.
 
 ## Project Overview
