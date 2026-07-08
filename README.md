@@ -186,6 +186,12 @@ Uses the rewrite proxy configuration (`vercel.json`) to direct all `/api/*` endp
   ]
 }
 ```
+# PROJECT PAPER PDF
+1.https://drive.google.com/file/d/1ox-D3Tgg_GenvqDlwyukJNIAv3ZwZs-F/view?usp=drivesdk
+2.https://drive.google.com/file/d/1YKyWQv32d7xhVgbWGHxcLRqmgd2kHj0s/view?usp=drivesdk
+
+
+
 
 ---
 
